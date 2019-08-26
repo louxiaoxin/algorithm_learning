@@ -64,21 +64,28 @@ class Solution {
 }
 
 class Solution {
+    //正反向走两遍，防止3,-1,4这个序列的返回为3
     public int maxProduct(int[] nums) {
-        int a = 1;
-        int max = nums[0];
-        
+        int a=1;
+        int max=nums[0];
         for(int num:nums){
-            a *= num;
-            if(max < a) max = a;
-            if(num == 0) a = 1;
+            a*=num;
+            if(max<a){
+                max=a;
+            }
+            if(num==0){
+                a=1;
+            }
         }
-        
-        a = 1;
-        for(int i = nums.length-1; i >= 0; i--){
-            a *= nums[i];
-            if(max < a) max = a;
-            if(nums[i] == 0) a = 1;
+        a=1;
+        for(int i=nums.length-1;i>=0;i--){
+            a*=nums[i];
+            if(max<a){
+                max=a;
+            }
+            if(nums[i]==0){
+                a=1;
+            }
         }
         return max;
     }
